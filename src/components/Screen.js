@@ -16,7 +16,7 @@ export default function Screen(){
    const [currentSymbol, setSymbol] = useState("");
    const [firstNumberCompleted, setFirstNumberCompleted] = useState(true);
 
-    function buttonHandler(props){
+    const buttonHandler = (props) =>{
         
         if(firstNumberCompleted)
         {
@@ -27,28 +27,28 @@ export default function Screen(){
         }
     }
 
-    function ClearResult(){
+    const clearResult = () =>{
         setSymbol("");
         setFirstNumber("")
         setSecondNumber("");
         setFirstNumberCompleted(true);
     }
 
-    function DevisionHandler(){
+    const devisionHandler = () =>{
         if(currentSymbol == "" && (firstNumber!= "-" && firstNumber!="")){
         setSymbol("/")
         setFirstNumberCompleted(false);
         }
   
     }
-    function MultiplicationHandler(){
+    const multiplicationHandler = ()=>{
         if(currentSymbol == "" && (firstNumber!= "-" && firstNumber!="")){
             setSymbol("*")
             setFirstNumberCompleted(false);
         }
        
     }
-    function SubstractionHandler(props){
+    const substractionHandler = (props) =>{
 
         if(firstNumber === ""){
             setFirstNumber(previousNumber => previousNumber + props.name);
@@ -60,14 +60,14 @@ export default function Screen(){
         }
          
     }
-    function onAdd(){
+    const onAdd = ()=>{
         if(currentSymbol == "" && (firstNumber!= "-" && firstNumber!="")){
             setSymbol("+")
             setFirstNumberCompleted(false);
         }
     }
 
-    function getResult(){
+    const getResult = () =>{
      const result = reducer(Number(firstNumber), Number(secondNumber), currentSymbol)
      setFirstNumber(result.toString());
      setSecondNumber("");
@@ -78,17 +78,17 @@ export default function Screen(){
         <div className="container calculator">
         <div className="screen-item screen"> <span>{`${firstNumber} ${currentSymbol} ${secondNumber}`.trim()}</span></div>
         <dl className="touche__box">
-        <Substraction name="-" onSubstraction={SubstractionHandler}/>
+        <Substraction name="-" onSubstraction={substractionHandler}/>
         <Addition onAddition={onAdd}/>
-        <Clear onClear={ClearResult}/>
+        <Clear onClear={clearResult}/>
         <Button name="7" dtClass = "touche__box-item clearme" onButtonClick={buttonHandler}/>
         <Button name="8" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Button name="9" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Division onDevision ={DevisionHandler}/>
+        <Division onDevision ={devisionHandler}/>
         <Button name="4" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Button name="5" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Button name="6" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Multiplication onMultiplication = {MultiplicationHandler}/>
+        <Multiplication onMultiplication = {multiplicationHandler}/>
         <Button name="1" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Button name="2" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Button name="3" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
