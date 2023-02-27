@@ -1,6 +1,6 @@
-import {useEffect, useState } from "react";
+import {useState } from "react";
 import Addition from "./Addition";
-import Button from "./Button";
+import Number from "./Number";
 import Clear from "./Clear";
 import Division from "./Division";
 import Equal from "./Equal";
@@ -23,7 +23,7 @@ export default function Screen(){
             setFirstNumber(previousNumber => previousNumber + props.name) 
         }
         else {
-         setSecondNumber(previousNumber => previousNumber + props.name)     
+            setSecondNumber(previousNumber => previousNumber + props.name)     
         }
     }
 
@@ -35,14 +35,14 @@ export default function Screen(){
     }
 
     const devisionHandler = () =>{
-        if(currentSymbol == "" && (firstNumber!= "-" && firstNumber!="")){
+        if(currentSymbol === "" && (firstNumber!== "-" && firstNumber!=="")){
         setSymbol("/")
         setFirstNumberCompleted(false);
         }
   
     }
     const multiplicationHandler = ()=>{
-        if(currentSymbol == "" && (firstNumber!= "-" && firstNumber!="")){
+        if(currentSymbol === "" && (firstNumber!== "-" && firstNumber!=="")){
             setSymbol("*")
             setFirstNumberCompleted(false);
         }
@@ -53,7 +53,7 @@ export default function Screen(){
         if(firstNumber === ""){
             setFirstNumber(previousNumber => previousNumber + props.name);
         }
-        else if (currentSymbol == "" && firstNumber!= "-")
+        else if (currentSymbol === "" && firstNumber!== "-")
         {
             setSymbol("-")
             setFirstNumberCompleted(false);
@@ -61,7 +61,7 @@ export default function Screen(){
          
     }
     const onAdd = ()=>{
-        if(currentSymbol == "" && (firstNumber!= "-" && firstNumber!="")){
+        if(currentSymbol === "" && (firstNumber!== "-" && firstNumber!=="")){
             setSymbol("+")
             setFirstNumberCompleted(false);
         }
@@ -81,20 +81,20 @@ export default function Screen(){
         <Substraction name="-" onSubstraction={substractionHandler}/>
         <Addition onAddition={onAdd}/>
         <Clear onClear={clearResult}/>
-        <Button name="7" dtClass = "touche__box-item clearme" onButtonClick={buttonHandler}/>
-        <Button name="8" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Button name="9" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="7" dtClass = "touche__box-item clearme" onButtonClick={buttonHandler}/>
+        <Number name="8" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="9" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Division onDevision ={devisionHandler}/>
-        <Button name="4" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Button name="5" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Button name="6" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="4" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="5" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="6" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Multiplication onMultiplication = {multiplicationHandler}/>
-        <Button name="1" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Button name="2" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
-        <Button name="3" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="1" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="2" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
+        <Number name="3" dtClass = "touche__box-item" onButtonClick={buttonHandler}/>
         <Equal onEqual={getResult}/>
-        <Button name="0" dtClass = "touche__box-item zero-item" onButtonClick={buttonHandler}/>
-        <Button name="." dtClass = "touche__box-item un-item" onButtonClick={buttonHandler}/>
+        <Number name="0" dtClass = "touche__box-item zero-item" onButtonClick={buttonHandler}/>
+        <Number name="." dtClass = "touche__box-item un-item" onButtonClick={buttonHandler}/>
         </dl>
         </div>
     )

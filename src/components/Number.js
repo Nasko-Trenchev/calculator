@@ -1,6 +1,4 @@
-export default function Button(props){
-
-
+export default function Number(props){
 
     return(
         <dt className={props.dtClass}> 
