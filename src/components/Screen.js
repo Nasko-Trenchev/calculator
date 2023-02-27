@@ -22,12 +22,18 @@ export default function Screen(){
         if(firstNumberCompleted)
         {
             setFirstNumber(previousNumber => previousNumber + props.name) 
+            setScreen(oldValue => oldValue + props.name)
         }
-        else{
-            setSecondNumber(previousNumber => previousNumber + props.name) 
+        else {
+            setSecondNumber(previousNumber => previousNumber + props.name)  
+
+            if(props.name == "." || secondNumber[secondNumber.length -1] == "."){
+                setScreen(oldValue => oldValue + props.name)
+            }
+            else{
+                setScreen(oldValue => oldValue + " " + props.name)
+            }
         }
-        
-        setScreen(oldValue=> oldValue + "" + props.name)
     }
 
     function ClearResult(){
@@ -39,24 +45,41 @@ export default function Screen(){
     }
 
     function DevisionHandler(){
+        if(currentSymbol == "0" && (firstNumber!= "-" && firstNumber!="")){
         setScreen(oldValue => oldValue + " /")
         setSymbol("/")
         setFirstNumberCompleted(false);
+        }
+  
     }
     function MultiplicationHandler(){
-        setScreen(oldValue => oldValue + " *")
-        setSymbol("*")
-        setFirstNumberCompleted(false);
+        if(currentSymbol == "0" && (firstNumber!= "-" && firstNumber!="")){
+            setScreen(oldValue => oldValue + " *")
+            setSymbol("*")
+            setFirstNumberCompleted(false);
+        }
+       
     }
-    function SubstractionHandler(){
-        setScreen(oldValue => oldValue + " -")
-        setSymbol("-")
-        setFirstNumberCompleted(false);
+    function SubstractionHandler(props){
+
+        if(firstNumber === ""){
+            setScreen(oldValue => oldValue + props.name);
+            setFirstNumber(previousNumber => previousNumber + props.name);
+        }
+        else if (currentSymbol == "0" && firstNumber!= "-")
+        {
+            setScreen(oldValue => oldValue + " -")
+            setSymbol("-")
+            setFirstNumberCompleted(false);
+        }
+         
     }
     function onAdd(){
-        setScreen(oldValue => oldValue + " +")
-        setSymbol("+")
-        setFirstNumberCompleted(false);
+        if(currentSymbol == "0" && (firstNumber!= "-" && firstNumber!="")){
+            setScreen(oldValue => oldValue + " +")
+            setSymbol("+")
+            setFirstNumberCompleted(false);
+        }
     }
 
     function getResult(){
@@ -64,13 +87,14 @@ export default function Screen(){
      setScreen(oldValue => oldValue = result);
      setFirstNumber(result.toString());
      setSecondNumber("");
+     setSymbol("0")
     }
     
     return (
         <div className="container calculator">
-        <div className="screen-item screen"> <span>{screen}</span></div>
+        <div className="screen-item screen"> <span> {screen}</span></div>
         <dl className="touche__box">
-        <Substraction onSubstraction={SubstractionHandler}/>
+        <Substraction name="-" onSubstraction={SubstractionHandler}/>
         <Addition onAddition={onAdd}/>
         <Clear onClear={ClearResult}/>
         <Button name="7" dtClass = "touche__box-item clearme" onButtonClick={ButtonHandler}/>

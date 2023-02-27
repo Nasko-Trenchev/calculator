@@ -4,6 +4,12 @@ import Screen from './components/Screen';
 function App() {
   return (
     <Screen/>
+  );
+}
+
+export default App;
+
+
  /*  <div className="container calculator">
     <div className="screen-item screen"> <span>screen</span></div>  
         <dl className="touche__box">
@@ -26,7 +32,3 @@ function App() {
         <dt className="touche__box-item un-item"><span className="sign">.</span></dt>
     </dl>
 </div>  */
-  );
-}
-
-export default App;

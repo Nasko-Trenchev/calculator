@@ -16,13 +16,17 @@
   top: 0px;
   left: 28px;
   text-align: right;
-  
+  overflow: auto;
+
 }
 .screen-item span {
   position: absolute;
+  display: inline-block;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  
+  
 }
 .screen-item .error {
   color: #f00;
