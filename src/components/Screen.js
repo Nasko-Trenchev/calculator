@@ -6,7 +6,7 @@ import Division from "./Division";
 import Equal from "./Equal";
 import Multiplication from "./Mutliplication";
 import Substraction from "./Substraction";
-import reducer from "../utils/Reducer";
+import reducer from "../utils/reducer";
 
 
 export default function Screen(){
